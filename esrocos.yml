@@ -1,0 +1,6 @@
+ASNACN_DIR: dataview/
+PROJECT_NAME: gr740-stream_aligner
+deps:
+- types/base: ''
+- types/base_support: ''
+- tools/stream_aligner: ''

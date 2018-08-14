@@ -1,0 +1,323 @@
+---------------------------------------------------
+-- AADL2.1
+-- TASTE type interfaceview
+-- 
+-- generated code: do not edit
+---------------------------------------------------
+
+PACKAGE interfaceview::IV::gr740_stream_aligner
+PUBLIC
+
+WITH interfaceview::IV::dummy_consumer_AB;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_A
+FEATURES
+  smpl : IN PARAMETER DataView::Base_samples_RigidBodyState {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_A;
+
+SUBPROGRAM IMPLEMENTATION PI_A.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_A.others;
+
+SUBPROGRAM PI_B
+FEATURES
+  smpl : IN PARAMETER DataView::Base_samples_RigidBodyState {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_B;
+
+SUBPROGRAM IMPLEMENTATION PI_B.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_B.others;
+
+SUBPROGRAM RI_aligned_A
+FEATURES
+  smpl : IN PARAMETER DataView::Base_samples_RigidBodyState {
+    Taste::encoding => NATIVE;
+  };
+END RI_aligned_A;
+
+SUBPROGRAM IMPLEMENTATION RI_aligned_A.others
+END RI_aligned_A.others;
+
+SUBPROGRAM RI_aligned_B
+FEATURES
+  smpl : IN PARAMETER DataView::Base_samples_RigidBodyState {
+    Taste::encoding => NATIVE;
+  };
+END RI_aligned_B;
+
+SUBPROGRAM IMPLEMENTATION RI_aligned_B.others
+END RI_aligned_B.others;
+
+SYSTEM gr740_stream_aligner
+FEATURES
+  PI_A : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::gr740_stream_aligner::PI_A.others {
+    Taste::coordinates => "148185 97951";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "A";
+  };
+  PI_B : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::gr740_stream_aligner::PI_B.others {
+    Taste::coordinates => "148185 128192";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "B";
+  };
+  RI_aligned_A : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::dummy_consumer_AB::PI_A.others {
+    Taste::coordinates => "212436 97957";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "aligned_A";
+    Taste::labelInheritance => "false";
+  };
+  RI_aligned_B : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::dummy_consumer_AB::PI_B.others {
+    Taste::coordinates => "212436 127719";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "aligned_B";
+    Taste::labelInheritance => "false";
+  };
+PROPERTIES
+  Source_Language => (CPP);
+  Taste::Active_Interfaces => any;
+END gr740_stream_aligner;
+
+SYSTEM IMPLEMENTATION gr740_stream_aligner.others
+SUBCOMPONENTS
+  periodA : DATA DataView::T_Double {
+    Taste::FS_Default_Value => "0.01";
+  };
+  periodB : DATA DataView::T_Double {
+    Taste::FS_Default_Value => "0.1";
+  };
+END gr740_stream_aligner.others;
+
+END interfaceview::IV::gr740_stream_aligner;
+
+PACKAGE interfaceview::IV::dummy_producer_A
+PUBLIC
+
+WITH interfaceview::IV::gr740_stream_aligner;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_period
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_period;
+
+SUBPROGRAM IMPLEMENTATION PI_period.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_period.others;
+
+SUBPROGRAM RI_A
+FEATURES
+  smpl : IN PARAMETER DataView::Base_samples_RigidBodyState {
+    Taste::encoding => NATIVE;
+  };
+END RI_A;
+
+SUBPROGRAM IMPLEMENTATION RI_A.others
+END RI_A.others;
+
+SYSTEM dummy_producer_A
+FEATURES
+  PI_period : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::dummy_producer_A::PI_period.others {
+    Taste::coordinates => "101730 85510";
+    Taste::RCMoperationKind => cyclic;
+    Taste::RCMperiod => 10 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "period";
+  };
+  RI_A : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::gr740_stream_aligner::PI_A.others {
+    Taste::coordinates => "121571 103620";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "A";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (CPP);
+  Taste::Active_Interfaces => any;
+END dummy_producer_A;
+
+SYSTEM IMPLEMENTATION dummy_producer_A.others
+END dummy_producer_A.others;
+
+END interfaceview::IV::dummy_producer_A;
+
+PACKAGE interfaceview::IV::dummy_producer_B
+PUBLIC
+
+WITH interfaceview::IV::gr740_stream_aligner;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_period
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_period;
+
+SUBPROGRAM IMPLEMENTATION PI_period.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_period.others;
+
+SUBPROGRAM RI_B
+FEATURES
+  smpl : IN PARAMETER DataView::Base_samples_RigidBodyState {
+    Taste::encoding => NATIVE;
+  };
+END RI_B;
+
+SUBPROGRAM IMPLEMENTATION RI_B.others
+END RI_B.others;
+
+SYSTEM dummy_producer_B
+FEATURES
+  PI_period : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::dummy_producer_B::PI_period.others {
+    Taste::coordinates => "106613 120154";
+    Taste::RCMoperationKind => cyclic;
+    Taste::RCMperiod => 100 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "period";
+  };
+  RI_B : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::gr740_stream_aligner::PI_B.others {
+    Taste::coordinates => "123934 132754";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "B";
+    Taste::labelInheritance => "true";
+  };
+PROPERTIES
+  Source_Language => (CPP);
+  Taste::Active_Interfaces => any;
+END dummy_producer_B;
+
+SYSTEM IMPLEMENTATION dummy_producer_B.others
+END dummy_producer_B.others;
+
+END interfaceview::IV::dummy_producer_B;
+
+PACKAGE interfaceview::IV::dummy_consumer_AB
+PUBLIC
+
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_A
+FEATURES
+  smpl : IN PARAMETER DataView::Base_samples_RigidBodyState {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_A;
+
+SUBPROGRAM IMPLEMENTATION PI_A.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_A.others;
+
+SUBPROGRAM PI_B
+FEATURES
+  smpl : IN PARAMETER DataView::Base_samples_RigidBodyState {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_B;
+
+SUBPROGRAM IMPLEMENTATION PI_B.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_B.others;
+
+SYSTEM dummy_consumer_AB
+FEATURES
+  PI_A : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::dummy_consumer_AB::PI_A.others {
+    Taste::coordinates => "233851 111809";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "A";
+  };
+  PI_B : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::dummy_consumer_AB::PI_B.others {
+    Taste::coordinates => "233851 118110";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "B";
+  };
+PROPERTIES
+  Source_Language => (CPP);
+  Taste::Active_Interfaces => any;
+END dummy_consumer_AB;
+
+SYSTEM IMPLEMENTATION dummy_consumer_AB.others
+END dummy_consumer_AB.others;
+
+END interfaceview::IV::dummy_consumer_AB;
+
+PACKAGE interfaceview::IV
+PUBLIC
+
+WITH interfaceview::IV::gr740_stream_aligner;
+WITH interfaceview::IV::dummy_producer_A;
+WITH interfaceview::IV::dummy_producer_B;
+WITH interfaceview::IV::dummy_consumer_AB;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SYSTEM interfaceview
+PROPERTIES
+  Taste::dataView => ("DataView");
+  Taste::dataViewPath => ("gr740-stream_aligner_dv.aadl");
+END interfaceview;
+
+SYSTEM IMPLEMENTATION interfaceview.others
+SUBCOMPONENTS
+  gr740_stream_aligner : SYSTEM interfaceview::IV::gr740_stream_aligner::gr740_stream_aligner.others {
+    Taste::coordinates => "148185 89919 212436 140468";
+  };
+  dummy_producer_A : SYSTEM interfaceview::IV::dummy_producer_A::dummy_producer_A.others {
+    Taste::coordinates => "93855 85510 121571 110706";
+  };
+  dummy_producer_B : SYSTEM interfaceview::IV::dummy_producer_B::dummy_producer_B.others {
+    Taste::coordinates => "92438 120154 123934 145193";
+  };
+  dummy_consumer_AB : SYSTEM interfaceview::IV::dummy_consumer_AB::dummy_consumer_AB.others {
+    Taste::coordinates => "233851 100785 272118 128186";
+  };
+CONNECTIONS
+  gr740_stream_aligner_PI_A_dummy_producer_A_RI_A : SUBPROGRAM ACCESS gr740_stream_aligner.PI_A -> dummy_producer_A.RI_A {
+    Taste::coordinates => "121571 103620 134878 103620 134878 97951 148185 97951";
+  };
+  gr740_stream_aligner_PI_B_dummy_producer_B_RI_B : SUBPROGRAM ACCESS gr740_stream_aligner.PI_B -> dummy_producer_B.RI_B {
+    Taste::coordinates => "123934 132754 136059 132754 136059 128192 148185 128192";
+  };
+  dummy_consumer_AB_PI_A_gr740_stream_aligner_RI_aligned_A : SUBPROGRAM ACCESS dummy_consumer_AB.PI_A -> gr740_stream_aligner.RI_aligned_A {
+    Taste::coordinates => "212436 97957 223143 97957 223143 111809 233851 111809";
+  };
+  dummy_consumer_AB_PI_B_gr740_stream_aligner_RI_aligned_B : SUBPROGRAM ACCESS dummy_consumer_AB.PI_B -> gr740_stream_aligner.RI_aligned_B {
+    Taste::coordinates => "212436 127719 223143 127719 223143 118110 233851 118110";
+  };
+END interfaceview.others;
+
+PROPERTIES
+  Taste::dataView => ("DataView");
+  Taste::dataViewPath => ("gr740-stream_aligner_dv.aadl");
+  Taste::coordinates => "0 0 297000 210000";
+  Taste::version => "2.0";
+END interfaceview::IV;
+
