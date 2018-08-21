@@ -193,63 +193,11 @@ Time Time::fromTimeValues(int year, int month, int day, int hour, int minute, in
     return Time(timeVal); 
 }
 
-char* strptime(const char* a, const char* b, struct tm* c)
-{
-    return NULL;
-}
-
 Time Time::fromString(const std::string& stringTime, Time::Resolution resolution, const std::string& mainFormat)
 {
+    // On the GR740 board, there exists no strptime, therefore this function should not be used!
+    // For now, we just return some defined base::Time value, e.g. max()
     return max();
-    std::string mainTime = stringTime;
-    int32_t usecs = 0;
-    if(resolution > Seconds)
-    {
-        size_t pos = stringTime.find_last_of(':');
-        std::string usecsString = stringTime.substr(pos+1);
-        size_t usecsStringLength = usecsString.size();
-        if( (usecsStringLength == 3 || usecsStringLength == 6) && !(usecsStringLength == 3 && resolution > Milliseconds))
-        {
-            // string matches resolutions
-        } else
-        { 
-            throw std::runtime_error("Time::fromString failed - resolution does not match provided Time-String");
-        }
-
-        switch(resolution)
-        {
-            case Milliseconds:
-                sscanf(usecsString.c_str(), "%03d", &usecs);
-                usecs = usecs*1000;
-                break;
-            case Microseconds:
-                sscanf(usecsString.c_str(), "%06d", &usecs);
-                break;
-            case Seconds:
-                throw std::invalid_argument(
-                    "Time::fromString(); "
-                    "'Seconds' is an invalid case "
-                    "here");
-            default:
-                throw std::invalid_argument("Time::fromString(): "
-                                            "invalid value in "
-                                            "switch-statement");
-        }
-    }
-
-    struct tm tm;
-    if(NULL == strptime(mainTime.c_str(), mainFormat.c_str(), &tm))
-    {
-        throw std::runtime_error("Time::fromString failed- Time-String '" + mainTime + "' did not match the given format '" + mainFormat +"'");
-    }
-    // " ... not set by strptime(); tells mktime() to determine 
-    // whether daylight saving time is in effect ..."
-    // (http://pubs.opengroup.org/onlinepubs/007904975/functions/strptime.html)
-        
-    tm.tm_isdst = -1; 
-    time_t time = mktime(&tm);
-
-    return Time(static_cast<int64_t>(time)*UsecPerSec + static_cast<int64_t>(usecs));
 }
 
 
