@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="2970.0" height="2100.0" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+<polyline fill="rgb(190, 190, 190)" stroke="rgb(0, 0, 0)" stroke-width="2.7453333333333334" stroke-linejoin="round" stroke-dasharray="" opacity="0.5" points="1069.26,529.12 1892.8600000000001,529.12 1892.8600000000001,1214.14 1069.26,1214.14 1069.26,529.12 "/>
+<text x="1069.26" y="556.5733333333334" text-anchor="start" font-family="Arial" font-size="27.453333333333333" font-style=""> Node1
+</text>
+<polyline fill="rgb(255, 255, 0)" stroke="rgb(0, 0, 0)" stroke-width="2.196266666666667" stroke-linejoin="round" stroke-dasharray="" opacity="0.5" points="1151.6200000000001,714.072 1185.5271843714572,666.12 1810.5,666.12 1776.5928156285427,714.072 1810.5,666.12 1810.5,1097.688 1776.5928156285427,1145.64 1151.6200000000001,1145.64 1151.6200000000001,714.072 1776.5928156285427,714.072 1776.5928156285427,1145.64 1776.5928156285427,714.072 1151.6200000000001,714.072 "/>
+<text x="1151.6200000000001" y="688.0826666666667" text-anchor="start" font-family="Arial" font-size="21.962666666666667" font-style=""> gr740_rtems51_posix
+</text>
+<polyline fill="rgb(255, 255, 0)" stroke="rgb(0, 0, 0)" stroke-width="1.7570000000000001" stroke-linejoin="round" stroke-dasharray="" opacity="0.5" points="1217.51,762.02 1744.6100000000001,762.02 1744.6100000000001,1097.69 1217.51,1097.69 1217.51,762.02 "/>
+<text x="1217.51" y="779.59" text-anchor="start" font-family="Arial" font-size="17.57" font-style=""> gr740_partition
+</text>
+<polyline fill="rgb(255, 255, 255)" stroke="rgb(127, 127, 127)" stroke-width="1.5813" stroke-linejoin="round" stroke-dasharray="" opacity="0.5" points="1243.8700000000001,829.15 1718.26,829.15 1718.26,929.86 1243.8700000000001,929.86 1243.8700000000001,829.15 "/>
+<text x="1243.8700000000001" y="844.963" text-anchor="start" font-family="Arial" font-size="15.812999999999999" font-style=""> gr740_stream_aligner
+	<tspan x="1243.8700000000001" dy="15.812999999999999">  dummy_producer_A</tspan>
+	<tspan x="1243.8700000000001" dy="15.812999999999999">  dummy_producer_B</tspan>
+	<tspan x="1243.8700000000001" dy="15.812999999999999">  dummy_consumer_AB</tspan>
+</text>
+</svg>

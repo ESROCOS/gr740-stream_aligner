@@ -1,0 +1,51 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="2970.0" height="2100.0" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+<polyline fill="rgb(255, 215, 0)" stroke="rgb(127, 127, 127)" stroke-width="2.1417" stroke-linejoin="round" stroke-dasharray="" opacity="0.5" points="1481.8500000000001,924.46 1482.71,917.9200000000001 1485.24,911.83 1489.25,906.59 1494.49,902.58 1500.58,900.0500000000001 1507.1200000000001,899.19 1507.1200000000001,899.19 2099.09,899.19 2099.09,899.19 2105.63,900.0500000000001 2111.73,902.58 2116.96,906.59 2120.9700000000003,911.83 2123.5,917.9200000000001 2124.36,924.46 2124.36,924.46 2124.36,1379.41 2124.36,1379.41 2123.5,1385.95 2120.9700000000003,1392.05 2116.96,1397.28 2111.73,1401.29 2105.63,1403.82 2099.09,1404.68 2099.09,1404.68 1507.1200000000001,1404.68 1507.1200000000001,1404.68 1500.58,1403.82 1494.49,1401.29 1489.25,1397.28 1485.24,1392.05 1482.71,1385.95 1481.8500000000001,1379.41 1481.8500000000001,924.46 1481.8500000000001,924.46 "/>
+<text x="1803" y="1152" text-anchor="middle" font-family="Arial" font-size="21.416999999999998" font-style="italic"> gr740_stream_aligner
+</text>
+<polyline fill="none" stroke="rgb(0, 0, 0)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="1215.71,1036.2 1348.78,1036.2 1348.78,979.51 1481.8500000000001,979.51 "/>
+<polyline fill="rgb(0, 0, 255)" stroke="rgb(21, 96, 189)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="1481.8500000000001,979.51 1465.78725,971.4786249999999 1465.78725,987.5413750000001 1481.8500000000001,979.51 "/>
+<text x="1481.8500000000001" y="979.51" text-anchor="start" font-family="Arial" font-size="21.416999999999998" font-style=""> A
+</text>
+<polyline fill="none" stroke="rgb(0, 0, 0)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="1239.34,1327.54 1360.59,1327.54 1360.59,1281.92 1481.8500000000001,1281.92 "/>
+<polyline fill="rgb(0, 0, 255)" stroke="rgb(21, 96, 189)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="1481.8500000000001,1281.92 1465.78725,1273.8886249999998 1465.78725,1289.951375 1481.8500000000001,1281.92 "/>
+<text x="1481.8500000000001" y="1281.92" text-anchor="start" font-family="Arial" font-size="21.416999999999998" font-style=""> B
+</text>
+<polyline fill="none" stroke="rgb(0, 0, 0)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="2124.36,979.57 2231.43,979.57 2231.43,1118.09 2338.51,1118.09 "/>
+<polyline fill="rgb(0, 0, 255)" stroke="rgb(21, 96, 189)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="2124.36,979.57 2124.36,987.6013750000002 2140.42275,979.57 2124.36,971.5386249999999 2124.36,979.57 "/>
+<text x="2124.36" y="979.57" text-anchor="end" font-family="Arial" font-size="21.416999999999998" font-style=""> aligned_A
+</text>
+<polyline fill="none" stroke="rgb(0, 0, 0)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="2124.36,1277.19 2231.43,1277.19 2231.43,1181.1000000000001 2338.51,1181.1000000000001 "/>
+<polyline fill="rgb(0, 0, 255)" stroke="rgb(21, 96, 189)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="2124.36,1277.19 2124.36,1285.221375 2140.42275,1277.19 2124.36,1269.1586249999998 2124.36,1277.19 "/>
+<text x="2124.36" y="1277.19" text-anchor="end" font-family="Arial" font-size="21.416999999999998" font-style=""> aligned_B
+</text>
+<polyline fill="rgb(255, 215, 0)" stroke="rgb(127, 127, 127)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="0.5" points="938.5500000000001,867.7 938.98,864.44 940.24,861.4 942.24,858.79 944.85,856.79 947.89,855.53 951.15,855.1 951.15,855.1 1203.1100000000001,855.1 1203.1100000000001,855.1 1206.3700000000001,855.53 1209.41,856.79 1212.02,858.79 1214.02,861.4 1215.28,864.44 1215.71,867.7 1215.71,867.7 1215.71,1094.46 1215.71,1094.46 1215.28,1097.72 1214.02,1100.76 1212.02,1103.3700000000001 1209.41,1105.3700000000001 1206.3700000000001,1106.63 1203.1100000000001,1107.06 1203.1100000000001,1107.06 951.15,1107.06 951.15,1107.06 947.89,1106.63 944.85,1105.3700000000001 942.24,1103.3700000000001 940.24,1100.76 938.98,1097.72 938.5500000000001,1094.46 938.5500000000001,867.7 938.5500000000001,867.7 "/>
+<text x="1077" y="981" text-anchor="middle" font-family="Arial" font-size="10" font-style="italic"> dummy_producer_A
+</text>
+<polyline fill="rgb(0, 0, 255)" stroke="rgb(21, 96, 189)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="1017.3000000000001,855.1 1020.7645,848.171 1013.8355,848.171 1017.3000000000001,855.1 "/>
+<text x="1017.3000000000001" y="865.1" text-anchor="middle" font-family="Arial" font-size="10" font-style=""> period
+</text>
+<polyline fill="rgb(0, 0, 255)" stroke="rgb(21, 96, 189)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="1215.71,1036.2 1215.71,1039.6645 1222.639,1036.2 1215.71,1032.7355 1215.71,1036.2 "/>
+<text x="1215.71" y="1036.2" text-anchor="end" font-family="Arial" font-size="10" font-style=""> A
+</text>
+<polyline fill="rgb(255, 215, 0)" stroke="rgb(127, 127, 127)" stroke-width="1.0498666666666665" stroke-linejoin="round" stroke-dasharray="" opacity="0.5" points="924.38,1214.06 924.8100000000001,1210.82 926.0600000000001,1207.8 928.0500000000001,1205.21 930.64,1203.22 933.66,1201.97 936.9,1201.54 936.9,1201.54 1226.82,1201.54 1226.82,1201.54 1230.06,1201.97 1233.08,1203.22 1235.67,1205.21 1237.66,1207.8 1238.91,1210.82 1239.34,1214.06 1239.34,1214.06 1239.34,1439.41 1239.34,1439.41 1238.91,1442.65 1237.66,1445.67 1235.67,1448.26 1233.08,1450.25 1230.06,1451.5 1226.82,1451.93 1226.82,1451.93 936.9,1451.93 936.9,1451.93 933.66,1451.5 930.64,1450.25 928.0500000000001,1448.26 926.0600000000001,1445.67 924.8100000000001,1442.65 924.38,1439.41 924.38,1214.06 924.38,1214.06 "/>
+<text x="1082" y="1327" text-anchor="middle" font-family="Arial" font-size="10.498666666666667" font-style="italic"> dummy_producer_B
+</text>
+<polyline fill="rgb(0, 0, 255)" stroke="rgb(21, 96, 189)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="1066.13,1201.54 1070.067,1193.6660000000002 1062.193,1193.6660000000002 1066.13,1201.54 "/>
+<text x="1066.13" y="1212.0386666666666" text-anchor="middle" font-family="Arial" font-size="10.498666666666667" font-style=""> period
+</text>
+<polyline fill="rgb(0, 0, 255)" stroke="rgb(21, 96, 189)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="1239.34,1327.54 1239.34,1331.477 1247.214,1327.54 1239.34,1323.6029999999998 1239.34,1327.54 "/>
+<text x="1239.34" y="1327.54" text-anchor="end" font-family="Arial" font-size="10.498666666666667" font-style=""> B
+</text>
+<polyline fill="rgb(255, 215, 0)" stroke="rgb(127, 127, 127)" stroke-width="1.2755666666666667" stroke-linejoin="round" stroke-dasharray="" opacity="0.5" points="2338.51,1021.5500000000001 2338.98,1018.0 2340.35,1014.7 2342.52,1011.86 2345.36,1009.69 2348.66,1008.32 2352.21,1007.85 2352.21,1007.85 2707.48,1007.85 2707.48,1007.85 2711.03,1008.32 2714.33,1009.69 2717.17,1011.86 2719.34,1014.7 2720.71,1018.0 2721.18,1021.5500000000001 2721.18,1021.5500000000001 2721.18,1268.16 2721.18,1268.16 2720.71,1271.71 2719.34,1275.01 2717.17,1277.8500000000001 2714.33,1280.02 2711.03,1281.39 2707.48,1281.8600000000001 2707.48,1281.8600000000001 2352.21,1281.8600000000001 2352.21,1281.8600000000001 2348.66,1281.39 2345.36,1280.02 2342.52,1277.8500000000001 2340.35,1275.01 2338.98,1271.71 2338.51,1268.16 2338.51,1021.5500000000001 2338.51,1021.5500000000001 "/>
+<text x="2530" y="1145" text-anchor="middle" font-family="Arial" font-size="12.755666666666666" font-style="italic"> dummy_consumer_AB
+</text>
+<polyline fill="rgb(0, 0, 255)" stroke="rgb(21, 96, 189)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="2338.51,1118.09 2328.9432500000003,1113.3066250000002 2328.9432500000003,1122.873375 2338.51,1118.09 "/>
+<text x="2338.51" y="1118.09" text-anchor="start" font-family="Arial" font-size="12.755666666666666" font-style=""> A
+</text>
+<polyline fill="rgb(0, 0, 255)" stroke="rgb(21, 96, 189)" stroke-width="1" stroke-linejoin="round" stroke-dasharray="" opacity="1.0" points="2338.51,1181.1000000000001 2328.9432500000003,1176.3166250000002 2328.9432500000003,1185.883375 2338.51,1181.1000000000001 "/>
+<text x="2338.51" y="1181.1000000000001" text-anchor="start" font-family="Arial" font-size="12.755666666666666" font-style=""> B
+</text>
+</svg>
