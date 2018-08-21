@@ -31,8 +31,8 @@ esrocos_init()
 ########### FOR INTEGRATION PROJECTS ##############
 
 #uncomment if you want to add dependencies for the build process (only required in integration projects)
-esrocos_add_dependency(PARTITION x86_partition
-                       MODULES   eigen3 base_support)
+#esrocos_add_dependency(PARTITION gr740_partition
+#                       MODULES   eigen3 base_support)
 
 ########### FOR COMPONENT PROJECTS ################
 

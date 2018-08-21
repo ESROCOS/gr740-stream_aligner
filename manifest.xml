@@ -1,1 +1,1 @@
-<package><depend package="types/base" /><depend package="types/base_support" /><depend package="tools/stream_aligner" /></package>
+<package><depend package="types/base" /><depend package="tools/stream_aligner" /></package>

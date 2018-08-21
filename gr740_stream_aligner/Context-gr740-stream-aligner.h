@@ -11,10 +11,12 @@ extern "C" {
 #endif
 
 
+/*-- asn1SccContext_gr740_stream_aligner --------------------------------------------*/
 
 typedef struct {
     asn1SccT_Double perioda;
     asn1SccT_Double periodb;
+
 } asn1SccContext_gr740_stream_aligner;
 
 flag asn1SccContext_gr740_stream_aligner_Equal(const asn1SccContext_gr740_stream_aligner* pVal1, const asn1SccContext_gr740_stream_aligner* pVal2);

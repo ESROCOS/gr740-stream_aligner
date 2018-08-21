@@ -96,10 +96,22 @@ END gr740_stream_aligner;
 SYSTEM IMPLEMENTATION gr740_stream_aligner.others
 SUBCOMPONENTS
   periodA : DATA DataView::T_Double {
-    Taste::FS_Default_Value => "0.01";
+    Taste::FS_Default_Value => "1.0";
   };
   periodB : DATA DataView::T_Double {
-    Taste::FS_Default_Value => "0.1";
+    Taste::FS_Default_Value => "3.0";
+  };
+  includeEigen : DATA DataView::Taste_directive {
+    Taste::FS_Default_Value => "compiler-option:""-I/usr/include/eigen3/""";
+  };
+  includeOrocos : DATA DataView::Taste_directive {
+    Taste::FS_Default_Value => "compiler-option:""-I/home/taste/esrocos_workspace/install/include/orocos/""";
+  };
+  includeOthers : DATA DataView::Taste_directive {
+    Taste::FS_Default_Value => "compiler-option:""-I/home/taste/esrocos_workspace/install/include/""";
+  };
+  includeBoost : DATA DataView::Taste_directive {
+    Taste::FS_Default_Value => "compiler-option:""-I/home/taste/esrocos_workspace/gr740-stream_aligner/boost_1_68_0/""";
   };
 END gr740_stream_aligner.others;
 
@@ -113,8 +125,6 @@ WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
 SUBPROGRAM PI_period
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
 END PI_period;
 
 SUBPROGRAM IMPLEMENTATION PI_period.others
@@ -137,7 +147,7 @@ FEATURES
   PI_period : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::dummy_producer_A::PI_period.others {
     Taste::coordinates => "101730 85510";
     Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 10 ms;
+    Taste::RCMperiod => 1000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "period";
   };
@@ -165,8 +175,6 @@ WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
 SUBPROGRAM PI_period
-PROPERTIES
-  Taste::Associated_Queue_Size => 1;
 END PI_period;
 
 SUBPROGRAM IMPLEMENTATION PI_period.others
@@ -189,7 +197,7 @@ FEATURES
   PI_period : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::dummy_producer_B::PI_period.others {
     Taste::coordinates => "106613 120154";
     Taste::RCMoperationKind => cyclic;
-    Taste::RCMperiod => 100 ms;
+    Taste::RCMperiod => 3000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "period";
   };
