@@ -31,19 +31,19 @@ esrocos_init()
 ########### FOR INTEGRATION PROJECTS ##############
 
 #uncomment if you want to add dependencies for the build process (only required in integration projects)
-#esrocos_add_dependency(PARTITION gr740_partition
-#                       MODULES   eigen3 base_support)
+esrocos_add_dependency(PARTITION gr740_partition
+                       MODULES   eigen3)
 
 ########### FOR COMPONENT PROJECTS ################
 
 #uncomment if you want to export a function
-#esrocos_export_function("example" "tutorial/example_dir")
+esrocos_export_function("gr740_stream_aligner" "gr740/stream_aligner")
 
 #uncomment to export PKG-CONFIG-file
-#esrocos_export_pkgconfig( VERSION 1.0
-#                          DESCRIPTION "none"
-#                          REQUIRES ""
-#                          LIBS ""
-#                          STATIC_LIBS "" 
-#                          C_FLAGS ""
-#                        ) 
+esrocos_export_pkgconfig( VERSION 1.0
+                          DESCRIPTION "none"
+                          REQUIRES "eigen3"
+                          LIBS ""
+                          STATIC_LIBS "" 
+                          C_FLAGS ""
+                        ) 
