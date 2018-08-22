@@ -3,6 +3,20 @@
 This component uses the stream aligner library of ROCK to align two streams of type RigidBodyState.
 The library itself can be found [here](https://github.com/ESROCOS/tools-stream_aligner).
 
+## Setup
+
+To setup and export the component, type:
+
+> esrocos_fetch_dependencies
+
+> esrocos_generate_skeletons
+
+> amake
+
+To build the integrated test deployment for the GR740, type:
+
+> esrocos_build_project
+
 ## Compilation issues
 
 When compiling this component for the GR740, there exist some issues which have to be resolved first.
