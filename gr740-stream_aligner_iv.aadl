@@ -102,9 +102,6 @@ SUBCOMPONENTS
   periodB : DATA DataView::T_Double {
     Taste::FS_Default_Value => "3.0";
   };
-  includeEigen : DATA DataView::Taste_directive {
-    Taste::FS_Default_Value => "compiler-option:""-I/usr/include/eigen3/""";
-  };
   includeOrocos : DATA DataView::Taste_directive {
     Taste::FS_Default_Value => "compiler-option:""-I/home/taste/esrocos_workspace/install/include/orocos/""";
   };
