@@ -91,7 +91,6 @@ FEATURES
 PROPERTIES
   Source_Language => (CPP);
   Taste::Active_Interfaces => any;
-  Source_Text => ("gr740_stream_aligner.zip");
 END gr740_stream_aligner;
 
 SYSTEM IMPLEMENTATION gr740_stream_aligner.others
@@ -118,7 +117,7 @@ END interfaceview::IV::gr740_stream_aligner;
 PACKAGE interfaceview::IV::dummy_producer_A
 PUBLIC
 
-WITH interfaceview::IV::gr740_stream_aligner;
+WITH interfaceview::IV::delay;
 WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
@@ -145,17 +144,17 @@ END RI_A.others;
 SYSTEM dummy_producer_A
 FEATURES
   PI_period : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::dummy_producer_A::PI_period.others {
-    Taste::coordinates => "101730 85510";
+    Taste::coordinates => "63327 66069";
     Taste::RCMoperationKind => cyclic;
     Taste::RCMperiod => 1000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "period";
   };
-  RI_A : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::gr740_stream_aligner::PI_A.others {
-    Taste::coordinates => "121571 103620";
+  RI_A : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::delay::PI_X.others {
+    Taste::coordinates => "83168 84179";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "A";
-    Taste::labelInheritance => "true";
+    Taste::labelInheritance => "false";
   };
 PROPERTIES
   Source_Language => (CPP);
@@ -197,17 +196,17 @@ END RI_B.others;
 SYSTEM dummy_producer_B
 FEATURES
   PI_period : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::dummy_producer_B::PI_period.others {
-    Taste::coordinates => "106613 120154";
+    Taste::coordinates => "81171 130475";
     Taste::RCMoperationKind => cyclic;
     Taste::RCMperiod => 3000 ms;
     Taste::Deadline => 0 ms;
     Taste::InterfaceName => "period";
   };
   RI_B : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::gr740_stream_aligner::PI_B.others {
-    Taste::coordinates => "123934 132754";
+    Taste::coordinates => "98492 143075";
     Taste::RCMoperationKind => any;
     Taste::InterfaceName => "B";
-    Taste::labelInheritance => "true";
+    Taste::labelInheritance => "false";
   };
 PROPERTIES
   Source_Language => (CPP);
@@ -279,6 +278,66 @@ END dummy_consumer_AB.others;
 
 END interfaceview::IV::dummy_consumer_AB;
 
+PACKAGE interfaceview::IV::delay
+PUBLIC
+
+WITH interfaceview::IV::gr740_stream_aligner;
+WITH Taste;
+WITH DataView;
+WITH TASTE_IV_Properties;
+SUBPROGRAM PI_X
+FEATURES
+  smpl : IN PARAMETER DataView::Base_samples_RigidBodyState {
+    Taste::encoding => NATIVE;
+  };
+PROPERTIES
+  Taste::Associated_Queue_Size => 1;
+END PI_X;
+
+SUBPROGRAM IMPLEMENTATION PI_X.others
+PROPERTIES
+  Compute_Execution_Time => 0 ms .. 0 ms;
+END PI_X.others;
+
+SUBPROGRAM RI_Y
+FEATURES
+  smpl : IN PARAMETER DataView::Base_samples_RigidBodyState {
+    Taste::encoding => NATIVE;
+  };
+END RI_Y;
+
+SUBPROGRAM IMPLEMENTATION RI_Y.others
+END RI_Y.others;
+
+SYSTEM delay
+FEATURES
+  PI_X : PROVIDES SUBPROGRAM ACCESS interfaceview::IV::delay::PI_X.others {
+    Taste::coordinates => "99764 87796";
+    Taste::RCMoperationKind => sporadic;
+    Taste::RCMperiod => 0 ms;
+    Taste::Deadline => 0 ms;
+    Taste::InterfaceName => "X";
+  };
+  RI_Y : REQUIRES SUBPROGRAM ACCESS interfaceview::IV::gr740_stream_aligner::PI_A.others {
+    Taste::coordinates => "128087 87796";
+    Taste::RCMoperationKind => any;
+    Taste::InterfaceName => "Y";
+    Taste::labelInheritance => "false";
+  };
+PROPERTIES
+  Source_Language => (CPP);
+  Taste::Active_Interfaces => any;
+END delay;
+
+SYSTEM IMPLEMENTATION delay.others
+SUBCOMPONENTS
+  noDelayedValues : DATA DataView::T_UInt16 {
+    Taste::FS_Default_Value => "5";
+  };
+END delay.others;
+
+END interfaceview::IV::delay;
+
 PACKAGE interfaceview::IV
 PUBLIC
 
@@ -286,6 +345,7 @@ WITH interfaceview::IV::gr740_stream_aligner;
 WITH interfaceview::IV::dummy_producer_A;
 WITH interfaceview::IV::dummy_producer_B;
 WITH interfaceview::IV::dummy_consumer_AB;
+WITH interfaceview::IV::delay;
 WITH Taste;
 WITH DataView;
 WITH TASTE_IV_Properties;
@@ -301,26 +361,32 @@ SUBCOMPONENTS
     Taste::coordinates => "148185 89919 212436 140468";
   };
   dummy_producer_A : SYSTEM interfaceview::IV::dummy_producer_A::dummy_producer_A.others {
-    Taste::coordinates => "93855 85510 121571 110706";
+    Taste::coordinates => "55452 66069 83168 91265";
   };
   dummy_producer_B : SYSTEM interfaceview::IV::dummy_producer_B::dummy_producer_B.others {
-    Taste::coordinates => "92438 120154 123934 145193";
+    Taste::coordinates => "66996 130475 98492 155514";
   };
   dummy_consumer_AB : SYSTEM interfaceview::IV::dummy_consumer_AB::dummy_consumer_AB.others {
     Taste::coordinates => "233851 100785 272118 128186";
   };
+  delay : SYSTEM interfaceview::IV::delay::delay.others {
+    Taste::coordinates => "99764 75791 128087 99313";
+  };
 CONNECTIONS
-  gr740_stream_aligner_PI_A_dummy_producer_A_RI_A : SUBPROGRAM ACCESS gr740_stream_aligner.PI_A -> dummy_producer_A.RI_A {
-    Taste::coordinates => "121571 103620 134878 103620 134878 97951 148185 97951";
+  gr740_stream_aligner_PI_A_delay_RI_Y : SUBPROGRAM ACCESS gr740_stream_aligner.PI_A -> delay.RI_Y {
+    Taste::coordinates => "128087 87796 138136 87796 138136 97951 148185 97951";
   };
   gr740_stream_aligner_PI_B_dummy_producer_B_RI_B : SUBPROGRAM ACCESS gr740_stream_aligner.PI_B -> dummy_producer_B.RI_B {
-    Taste::coordinates => "123934 132754 136059 132754 136059 128192 148185 128192";
+    Taste::coordinates => "98492 143075 123338 143075 123338 128192 148185 128192";
   };
   dummy_consumer_AB_PI_A_gr740_stream_aligner_RI_aligned_A : SUBPROGRAM ACCESS dummy_consumer_AB.PI_A -> gr740_stream_aligner.RI_aligned_A {
     Taste::coordinates => "212436 97957 223143 97957 223143 111809 233851 111809";
   };
   dummy_consumer_AB_PI_B_gr740_stream_aligner_RI_aligned_B : SUBPROGRAM ACCESS dummy_consumer_AB.PI_B -> gr740_stream_aligner.RI_aligned_B {
     Taste::coordinates => "212436 127719 223143 127719 223143 118110 233851 118110";
+  };
+  delay_PI_X_dummy_producer_A_RI_A : SUBPROGRAM ACCESS delay.PI_X -> dummy_producer_A.RI_A {
+    Taste::coordinates => "83168 84179 91466 84179 91466 87796 99764 87796";
   };
 END interfaceview.others;
 

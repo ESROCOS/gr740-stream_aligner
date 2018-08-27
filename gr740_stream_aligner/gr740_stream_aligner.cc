@@ -7,17 +7,24 @@
 #include "stream_aligner/StreamAligner.hpp"
 #include <algorithm>
 #include <iostream>
+#include <ctime>
 
+#define DEBUG
+
+#ifdef DEBUG
+static int64_t reference_timestamp = 0;
+#endif
 // Instance of the stream aligner with 2 independent streams
 stream_aligner::StreamAligner<2> aligner;
 // Unfortunately, we have to set the buffer size as a constant expression. Otherwise, we cannot deduce the template ...
-const unsigned int buf_size(20);
-const double timeout(std::max(gr740_stream_aligner_ctxt.perioda, gr740_stream_aligner_ctxt.periodb));
-const double window_size(2. * timeout);
-int streamA, streamB;
-base::samples::RigidBodyState smplA, smplB;
-asn1SccBase_samples_RigidBodyState outA, outB;
-bool buf_size_ok = false;
+static const unsigned int buf_size(20);
+static const double maxPeriod(std::max(gr740_stream_aligner_ctxt.perioda, gr740_stream_aligner_ctxt.periodb));
+static const double timeout(maxPeriod + maxPeriod * 0.1f);
+static const double window_size(2. * timeout);
+static int streamA, streamB;
+static base::samples::RigidBodyState smplA, smplB;
+static asn1SccBase_samples_RigidBodyState outA, outB;
+static bool buf_size_ok = false;
 
 // These callbacks are called in order of the timestamps producing to aligned streams
 void rbs_callback_a(const base::Time& time, const base::samples::RigidBodyState& rbs)
@@ -61,12 +68,21 @@ void gr740_stream_aligner_startup()
     // Register streams
     streamA = aligner.registerStream<base::samples::RigidBodyState, buf_size>(&rbs_callback_a, base::Time::fromSeconds(gr740_stream_aligner_ctxt.perioda), 1);
     streamB = aligner.registerStream<base::samples::RigidBodyState, buf_size>(&rbs_callback_b, base::Time::fromSeconds(gr740_stream_aligner_ctxt.periodb), 2);
+
+#ifdef DEBUG
+    struct timespec spec;
+    clock_gettime(CLOCK_REALTIME, &spec);
+    reference_timestamp = spec.tv_nsec / 1000 + spec.tv_sec * 1000000;
+#endif
 }
 
 void gr740_stream_aligner_PI_A(const asn1SccBase_samples_RigidBodyState *IN_smpl)
 {
     if (!buf_size_ok)
         return;
+#ifdef DEBUG
+    std::cout << "IN: " << ((IN_smpl->time.microseconds - reference_timestamp) / 1000000.f) << ", A\n";
+#endif
     asn1SccBase_samples_RigidBodyState_fromAsn1(smplA, *IN_smpl);
     aligner.push<base::samples::RigidBodyState, buf_size>(streamA, smplA.time, smplA);
     while (aligner.step()) ;
@@ -76,6 +92,9 @@ void gr740_stream_aligner_PI_B(const asn1SccBase_samples_RigidBodyState *IN_smpl
 {
     if (!buf_size_ok)
         return;
+#ifdef DEBUG
+    std::cout << "IN: " << ((IN_smpl->time.microseconds - reference_timestamp) / 1000000.f) << ", B\n";
+#endif
     asn1SccBase_samples_RigidBodyState_fromAsn1(smplB, *IN_smpl);
     aligner.push<base::samples::RigidBodyState, buf_size>(streamB, smplB.time, smplB);
     while (aligner.step()) ;

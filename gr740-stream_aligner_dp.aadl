@@ -26,6 +26,7 @@ WITH interfaceview::IV::gr740_stream_aligner;
 WITH interfaceview::IV::dummy_producer_A;
 WITH interfaceview::IV::dummy_producer_B;
 WITH interfaceview::IV::dummy_consumer_AB;
+WITH interfaceview::IV::delay;
 WITH ocarina_processors_leon;
 WITH deploymentview::DV::Node1;
 WITH Taste;
@@ -49,6 +50,9 @@ SUBCOMPONENTS
   IV_dummy_consumer_AB : SYSTEM interfaceview::IV::dummy_consumer_AB::dummy_consumer_AB.others {
     Taste::FunctionName => "dummy_consumer_AB";
   };
+  IV_delay : SYSTEM interfaceview::IV::delay::delay.others {
+    Taste::FunctionName => "delay";
+  };
   gr740_partition : PROCESS deploymentview::DV::Node1::gr740_partition.others {
     Taste::coordinates => "121751 76202 174461 109769";
     Deployment::Port_Number => 0;
@@ -61,6 +65,7 @@ PROPERTIES
   Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_dummy_producer_A;
   Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_dummy_producer_B;
   Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_dummy_consumer_AB;
+  Taste::APLC_Binding => (reference (gr740_partition)) APPLIES TO IV_delay;
   Actual_Processor_Binding => (reference (gr740_rtems51_posix)) APPLIES TO gr740_partition;
 END Node1.others;
 
