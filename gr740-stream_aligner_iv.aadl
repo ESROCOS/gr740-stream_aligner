@@ -91,6 +91,7 @@ FEATURES
 PROPERTIES
   Source_Language => (CPP);
   Taste::Active_Interfaces => any;
+  Source_Text => ("gr740_stream_aligner.zip");
 END gr740_stream_aligner;
 
 SYSTEM IMPLEMENTATION gr740_stream_aligner.others
