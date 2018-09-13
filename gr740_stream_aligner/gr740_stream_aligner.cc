@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <iostream>
 #include <ctime>
+#include <cstring>
 
 #define DEBUG
 
@@ -26,6 +27,19 @@ static base::samples::RigidBodyState smplA, smplB;
 static asn1SccBase_samples_RigidBodyState outA, outB;
 static bool buf_size_ok = false;
 
+void init_rbs(asn1SccBase_samples_RigidBodyState *rbs)
+{
+   memset(rbs, 0, sizeof(asn1SccBase_samples_RigidBodyState));
+   rbs->position.data.nCount = 3;
+   rbs->cov_position.data.nCount = 9;
+   rbs->orientation.im.nCount = 3;
+   rbs->cov_orientation.data.nCount = 9;
+   rbs->velocity.data.nCount = 3;
+   rbs->cov_velocity.data.nCount = 9;
+   rbs->angular_velocity.data.nCount = 3;
+   rbs->cov_angular_velocity.data.nCount = 9;
+}
+
 // These callbacks are called in order of the timestamps producing to aligned streams
 void rbs_callback_a(const base::Time& time, const base::samples::RigidBodyState& rbs)
 {
@@ -43,6 +57,8 @@ void gr740_stream_aligner_startup()
 {
     /* Write your initialization code here,
        but do not make any call to a required interface. */
+    init_rbs(&outA);
+    init_rbs(&outB);
     std::cout << "[gr740_stream_aligner_startup] startup\n";
 
     std::cout << "Buffer size: " << buf_size << "\n";
