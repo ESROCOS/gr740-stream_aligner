@@ -96,10 +96,11 @@ void gr740_stream_aligner_PI_A(const asn1SccBase_samples_RigidBodyState *IN_smpl
 {
     if (!buf_size_ok)
         return;
-#ifdef DEBUG
-    std::cout << "IN: " << ((IN_smpl->time.microseconds - reference_timestamp) / 1000000.f) << ", A\n";
-#endif
     asn1SccBase_samples_RigidBodyState_fromAsn1(smplA, *IN_smpl);
+#ifdef DEBUG
+    std::cout << "[gr740_stream_aligner_PI_A] ts: " << ((IN_smpl->time.microseconds - reference_timestamp) / 1000000.f) << "\n";
+    std::cout << "[gr740_stream_aligner_PI_A] pos: " << smplA.position.transpose() << " orient: " << smplA.orientation.vec().transpose() << std::endl;
+#endif
     aligner.push<base::samples::RigidBodyState, buf_size>(streamA, smplA.time, smplA);
     while (aligner.step()) ;
 }
@@ -108,10 +109,11 @@ void gr740_stream_aligner_PI_B(const asn1SccBase_samples_RigidBodyState *IN_smpl
 {
     if (!buf_size_ok)
         return;
-#ifdef DEBUG
-    std::cout << "IN: " << ((IN_smpl->time.microseconds - reference_timestamp) / 1000000.f) << ", B\n";
-#endif
     asn1SccBase_samples_RigidBodyState_fromAsn1(smplB, *IN_smpl);
+#ifdef DEBUG
+    std::cout << "[gr740_stream_aligner_PI_B] ts: " << ((IN_smpl->time.microseconds - reference_timestamp) / 1000000.f) << "\n";
+    std::cout << "[gr740_stream_aligner_PI_B] pos: " << smplB.position.transpose() << " orient: " << smplB.orientation.vec().transpose() << std::endl;
+#endif
     aligner.push<base::samples::RigidBodyState, buf_size>(streamB, smplB.time, smplB);
     while (aligner.step()) ;
 }
