@@ -10,7 +10,7 @@
 #include <ctime>
 #include <cstring>
 
-#define DEBUG
+//#define DEBUG
 
 #ifdef DEBUG
 static int64_t reference_timestamp = 0;
