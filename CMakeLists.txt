@@ -37,7 +37,7 @@ esrocos_add_dependency(PARTITION gr740_partition
 ########### FOR COMPONENT PROJECTS ################
 
 #uncomment if you want to export a function
-esrocos_export_function("gr740_stream_aligner" "gr740/stream_aligner")
+esrocos_export_function("gr740_stream_aligner" "share/taste_components/stream_aligner")
 
 #uncomment to export PKG-CONFIG-file
 esrocos_export_pkgconfig( VERSION 1.0
